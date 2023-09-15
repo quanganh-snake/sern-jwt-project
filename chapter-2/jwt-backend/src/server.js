@@ -1,11 +1,14 @@
 import express from "express";
 require("dotenv").config();
-import configViewEngine from "./configs/viewEngine";
+import configViewEngine from "./config/viewEngine";
 import initWebRoutes from "./routes/web";
 import initApiRoutes from "./routes/api";
 
+//connect DB
+import connection from "./config/connectDB";
+
 //config Cos
-import configCors from "./configs/cors";
+import configCors from "./config/cors";
 import bodyParser from "body-parser";
 const app = express();
 const PORT = process.env.PORT || 8088;
@@ -22,6 +25,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
+
+//test connection DB
+connection();
 
 //init web/api routes
 initWebRoutes(app);

@@ -10,17 +10,15 @@ const router = express.Router();
 const initWebRoutes = (app) => {
 	router.get("/", homeController.handleHome);
 	router.get("/login", homeController.handleLogin);
-	router.get("/user", homeController.handleUserPage);
+	router.get("/users", homeController.handleUserPage);
 	router.post("/users/create-user", homeController.handleCreateNewUser);
-	router.get("/delete-user/:id", homeController.handleDeleteUser);
-	router.get("/update-user/:id", homeController.handleUpdateUser);
-	router.get("/user/update-user", homeController.handleUpdatePageUser);
-
-
+	router.post("/delete-user/:id", homeController.handleDeleteUser);
+	router.get("/update-user/:id", homeController.handleUpdatePageUser);
+	router.post("/users/update-user", homeController.handleUpdateUser);
 	//Rest APi
 	//GET - R, POST - C, PUT - U, DELETE - D
-	router.get('/api/test-api', apiController.testApi);
-	
+	router.get("/api/test-api", apiController.testApi);
+
 	return app.use("/", router);
 };
 

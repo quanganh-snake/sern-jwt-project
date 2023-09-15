@@ -19,29 +19,64 @@
 		/>
 	</head>
 	<body>
-		<div class="container user-infor-page my-5">
-			<form method="POST" action="/users/create-user" class="row justify-content-center">
-				<h1 class="text-center">Register Account</h1>
-				<div class="col-6">
-					<div class="mb-3">
-						<label for="email" class="form-label">Email address</label>
-						<input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" required />
-					</div>
-					<div class="mb-3">
-						<label for="username" class="form-label">Username</label>
-						<input type="text" name="username" class="form-control" id="username" aria-describedby="emailHelp" required />
-					</div>
-					<div class="mb-3">
-						<label for="password" class="form-label">Password</label>
-						<input type="password" name="password" class="form-control" id="password" required />
-					</div>
-					<div class="mb-3 form-check">
-						<input type="checkbox" class="form-check-input" id="exampleCheck1" />
-						<label class="form-check-label" for="exampleCheck1">Check me out</label>
-					</div>
-					<button type="submit" class="btn btn-primary">Submit</button>
+		<!-- <div>Data <%=JSON.stringify(userList)%></div> -->
+		<div class="container">
+			<div class="row">
+				<!-- form -->
+				<div class="container user-infor-page my-5">
+					<form method="POST" action="/users/create-user" class="row justify-content-center">
+						<h1 class="text-center">Register Account</h1>
+						<div class="col-6">
+							<div class="mb-3">
+								<label for="email" class="form-label">Email address</label>
+								<input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" required />
+							</div>
+							<div class="mb-3">
+								<label for="username" class="form-label">Username</label>
+								<input type="text" name="username" class="form-control" id="username" aria-describedby="emailHelp" required />
+							</div>
+							<div class="mb-3">
+								<label for="password" class="form-label">Password</label>
+								<input type="password" name="password" class="form-control" id="password" required />
+							</div>
+
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</form>
 				</div>
-			</form>
+				<!-- End Form -->
+
+				<!-- Tables -->
+				<h2>Table Users:</h2>
+				<table class="table table-bordered border">
+					<thead>
+						<tr class="text-center">
+							<th scope="col">STT</th>
+							<th scope="col">Email</th>
+							<th scope="col">Username</th>
+							<th scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% userList.forEach(function(item,index){ %>
+						<tr>
+							<th class="text-center" scope="row"><%= index+1 %></th>
+							<td><%=item.email%></td>
+							<td><%=item.username%></td>
+							<td class="text-center">
+								<a href="/update-user/<%= item.id %>" style="text-decoration: none">
+									<button type="submit" class="btn btn-warning">Edit</button>
+								</a>
+								<form action="/delete-user/<%= item.id %>" method="POST" style="display: inline">
+									<button type="submit" class="btn btn-danger">Delete</button>
+								</form>
+							</td>
+						</tr>
+						<% }) %>
+					</tbody>
+				</table>
+				<!-- End tables -->
+			</div>
 		</div>
 	</body>
 </html>

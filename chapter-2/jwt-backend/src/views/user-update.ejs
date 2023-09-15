@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>User Update Page</title>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"
+			integrity="sha512-ToL6UYWePxjhDQKNioSi4AyJ5KkRxY+F1+Fi7Jgh0Hp5Kk2/s8FD7zusJDdonfe5B00Qw+B8taXxF6CFLnqNCw=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
+			integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<!-- form -->
+				<div class="container user-infor-page my-5">
+					<form method="POST" action="/users/update-user" class="row justify-content-center">
+						<h1 class="text-center">Update Account</h1>
+						<div class="col-6">
+							<div class="mb-3">
+								<input hidden title="data id" type="text" value="<%=user.id%>" name="id" />
+								<label for="email" class="form-label">Email address</label>
+								<input type="email" name="email" value="<%=user.email%>" class="form-control" id="email" aria-describedby="emailHelp" required />
+							</div>
+							<div class="mb-3">
+								<label for="username" class="form-label">Username</label>
+								<input type="text" name="username" value="<%=user.username%>" class="form-control" id="username" aria-describedby="emailHelp" required />
+							</div>
+
+							<button type="submit" class="btn btn-primary">Update</button>
+						</div>
+					</form>
+				</div>
+				<!-- End Form -->
+			</div>
+		</div>
+	</body>
+</html>
